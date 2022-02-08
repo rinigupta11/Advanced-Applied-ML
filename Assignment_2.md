@@ -219,7 +219,102 @@ Avg MSE : 17.65258283254534
 
 ## Random Forest Regressor
 
-Next, we examined the performance of a random forest regressor 
+Next, we examined the performance of a random forest regressor. First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
+
+```
+k = 10
+kf = KFold(n_splits=k, shuffle=True, random_state=2021)
+
+acc_score = []
+
+for train_index , test_index in kf.split(X):
+    X_train , X_test = X.iloc[train_index,:].values,X.iloc[test_index,:].values
+    y_train, y_test = y[train_index], y[test_index]
+    scale = ss()
+    xtrain_scaled = scale.fit_transform(X_train.reshape(-1,1))
+    xtest_scaled = scale.transform(X_test.reshape(-1,1))
+    rf = RandomForestRegressor(n_estimators=100,max_depth=3)
+    rf.fit(xtrain_scaled,y_train)
+    pred_values = rf.predict(xtest_scaled)    
+    acc_score.append(MSE(pred_values, y_test))
+avg_acc_score = sum(acc_score)/k
+
+print('MSE of each fold:  {}'.format(acc_score))
+print('Avg MSE: {}'.format(avg_acc_score))
+
+## Referenced https://www.askpython.com/python/examples/k-fold-cross-validation
+```
+
+The output of this block of code was:
+MSE of each fold:  [10.519229346856164, 16.949036884302654, 18.930417456552682, 23.847069406609652, 15.755929545760456, 13.959282952567856, 12.680582125310195, 17.404585471427826, 20.771358047591054, 26.680258272157243]
+Avg MSE: 17.74977495091358
+
+
+Then, we sought to optimize the performance of this model by fine-tuning the hyperparameters. Specifically, we tested different values for n-estimators and max depth.
+
+```
+k = 10
+kf = KFold(n_splits=k, shuffle=True, random_state=2021)
+hyper_values = []
+for estimators in [100, 500, 1000]: 
+  for depth in [1, 2, 3, 4, 5]: 
+    acc_score = []
+
+    for train_index , test_index in kf.split(X):
+        X_train , X_test = X.iloc[train_index,:].values,X.iloc[test_index,:].values
+        y_train, y_test = y[train_index], y[test_index]
+        scale = ss()
+        xtrain_scaled = scale.fit_transform(X_train.reshape(-1,1))
+        xtest_scaled = scale.transform(X_test.reshape(-1,1))
+        rf = RandomForestRegressor(n_estimators=estimators,max_depth=depth)
+        rf.fit(xtrain_scaled,y_train)
+        pred_values = rf.predict(xtest_scaled)    
+        acc_score.append(MSE(pred_values, y_test))
+    hyper_values.append([estimators, depth, avg_acc_score])
+    avg_acc_score = sum(acc_score)/k
+
+## Referenced https://www.askpython.com/python/examples/k-fold-cross-validation
+```
+Then, the minimum MSE value was extracted from the hyper_values array to determine the optimal combination of hyperparameters. 
+
+```
+np.argmin(np.array(hyper_values)[:, 2])
+hyper_values[13]
+```
+
+The results of this were 1000 estimators and a max-depth of 3. 
+
+Next, we reran the model after that with the optimal hyperparameters: 
+```
+k = 10
+kf = KFold(n_splits=k, shuffle=True, random_state=2021)
+acc_score = []
+
+for train_index , test_index in kf.split(X):
+    X_train , X_test = X.iloc[train_index,:].values,X.iloc[test_index,:].values
+    y_train, y_test = y[train_index], y[test_index]
+    scale = ss()
+    xtrain_scaled = scale.fit_transform(X_train.reshape(-1,1))
+    xtest_scaled = scale.transform(X_test.reshape(-1,1))
+    rf = RandomForestRegressor(n_estimators=1000,max_depth=3)
+    rf.fit(xtrain_scaled,y_train)
+    pred_values = rf.predict(xtest_scaled)    
+    acc_score.append(MSE(pred_values, y_test))
+hyper_values.append([estimators, depth, avg_acc_score])
+avg_acc_score = sum(acc_score)/k
+print('MSE of each fold:  {}'.format(acc_score))
+print('Avg MSE: {}'.format(avg_acc_score))
+```
+The final results of the random forest regression were:
+MSE of each fold:  [10.466084021899821, 16.84115857614325, 18.860320166543016, 23.864277401941745, 15.73568647050125, 13.776225070335666, 12.351881045004149, 17.23327814061998, 20.60788458255633, 27.00394602732672]
+Avg MSE: 17.67407415028719.
+
+
+### Final Comparison
+Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. The final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. 
+
+
+
 
 
 
