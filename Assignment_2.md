@@ -217,6 +217,8 @@ The final output of this was:
 MSE of each fold :  [11.541070792970553, 19.295776420950126, 16.677534852169654, 23.188253372530607, 15.809113819696282, 14.116661765872486, 12.6881410725552, 17.67105448817393, 21.53164020038221, 24.006581540152368]
 Avg MSE : 17.65258283254534
 
+![image](https://user-images.githubusercontent.com/76021844/153276801-d8b78d3e-c690-4a43-a12f-7fc1b49da94b.png)
+
 ## Random Forest Regressor
 
 Next, we examined the performance of a random forest regressor. First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
@@ -309,6 +311,7 @@ The final results of the random forest regression were:
 MSE of each fold:  [10.466084021899821, 16.84115857614325, 18.860320166543016, 23.864277401941745, 15.73568647050125, 13.776225070335666, 12.351881045004149, 17.23327814061998, 20.60788458255633, 27.00394602732672]
 Avg MSE: 17.67407415028719.
 
+![image](https://user-images.githubusercontent.com/76021844/153276691-be508348-8481-4969-9569-9d461c49de02.png)
 
 ### Final Comparison
 Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. The final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. 
