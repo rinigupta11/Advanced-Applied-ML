@@ -76,7 +76,7 @@ def lowess_reg(x, y, xnew, kern, tau):
     return f(xnew)
 ```
 
-For our analysis of locally weighted linear regression, we will experiment with all three of the kernels to see which performs the best. 
+For our analysis of locally weighted linear regression, we will experiment with all three of the kernels to see which performs the best. In locally weighted linear regression, we need the training data as well as the parameters to make a prediction, as it is key to understand which points are close to the test point. The weight term is a function of the test point and the training data points, meaning it measures how close the test point is to each of the training data points. Such a distance measure is called a kernel function. Kernel functions will be useful in other learning algorithms as well, particularly in Support Vector Machines. For this project, the tricubic, Quartic, and Epanechniko kernel are used below.
 
 ```
 # Tricubic kernel 
