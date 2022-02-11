@@ -2,7 +2,7 @@
 By Rini Gupta and Kimya Shirazi 
 
 We will be using a simple cars dataset with one input feature on both regression methods. In order to compare performance, we include a cross-validation step
-comparing the mean-squared error between the two methods. 
+comparing the mean-squared error between the two methods. Cross-Validation is a statistical method of evaluating and comparing learning algorithms by dividing data into two segments: one used to learn or train a model and the other used to validate the model. Additionally, the mean-squared error is a simple and common loss function.
 
 #### Import Necessary Libraries 
 ```
