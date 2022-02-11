@@ -36,7 +36,8 @@ y = data['MPG'].values # target
 ```
 
 ## Locally Weighted Linear Regression
-Next, we will examine the performance of a locally weighted linear regression model. 
+Next, we will examine the performance of a locally weighted linear regression model. Linear regression is a supervised learning algorithm used for computing linear relationships between input (X) and output (Y). In the instance of a non-linear relationship between X and Y, locally weighted linear regression is used. Locally weighted linear regression is a non-parametric algorithm, that is, the model does not learn a fixed set of parameters as is done in ordinary linear regression. Rather parameters (theta) are computed individually for each query point x. While computing theta, a higher “preference” is given to the points in the training set lying in the vicinity of x than the points lying far away from x.
+
 ```
 # Tricubic Kernel
 def tricubic(x):
