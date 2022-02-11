@@ -160,7 +160,7 @@ Avg MSE : 17.668989890453354
 
 ### Hyperparameter Optimization
 
-For locally-weighted linear regression, we can try to optimize tau to obtain the best results. Out of the three different kernels, the Epanechnikov kernel yieled the lowest MSE value. As a result, for our hyperparameter optimization, we will continue to use the Epanechnikov kernel. 
+For locally-weighted linear regression, we can try to optimize tau to obtain the best results. Out of the three different kernels, the Epanechnikov kernel yieled the lowest MSE value. As a result, for our hyperparameter optimization, we will continue to use the Epanechnikov kernel. Hyperparameter optimization in machine learning intends to find the hyperparameters of a given machine learning algorithm that deliver the best performance as measured on a validation set. Hyperparameters, in contrast to model parameters, are set by the machine learning engineer before training.
 
 ```
 # Epanechnikov kernel 
