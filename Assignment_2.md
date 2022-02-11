@@ -221,7 +221,7 @@ Avg MSE : 17.65258283254534
 
 ## Random Forest Regressor
 
-Next, we examined the performance of a random forest regressor. First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
+Next, we examined the performance of a random forest regressor. The random forest regressor model is an ensemble model that incorporates many decision trees into its structure to make a final prediction on data. Random-forests are advantageous over decision trees because they are better at preventing overfitting due to the ensemble nature of the model (incorporating several predictions). First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
 
 ```
 k = 10
