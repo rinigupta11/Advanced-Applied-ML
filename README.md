@@ -2,7 +2,7 @@
 By Rini Gupta and Kimya Shirazi 
 
 We will be using a simple cars dataset with one input feature on both regression methods. In order to compare performance, we include a cross-validation step
-comparing the mean-squared error between the two methods. 
+comparing the mean-squared error between the two methods. Cross-Validation is a statistical method of evaluating and comparing learning algorithms by dividing data into two segments: one used to learn or train a model and the other used to validate the model. Additionally, the mean-squared error is a simple and common loss function.
 
 #### Import Necessary Libraries 
 ```
@@ -36,7 +36,8 @@ y = data['MPG'].values # target
 ```
 
 ## Locally Weighted Linear Regression
-Next, we will examine the performance of a locally weighted linear regression model. 
+Next, we will examine the performance of a locally weighted linear regression model. Linear regression is a supervised learning algorithm used for computing linear relationships between input (X) and output (Y). In the instance of a non-linear relationship between X and Y, locally weighted linear regression is used. Locally weighted linear regression is a non-parametric algorithm, that is, the model does not learn a fixed set of parameters as is done in ordinary linear regression. Rather parameters (theta) are computed individually for each query point x. While computing theta, a higher “preference” is given to the points in the training set lying in the vicinity of x than the points lying far away from x.
+
 ```
 # Tricubic Kernel
 def tricubic(x):
@@ -75,7 +76,7 @@ def lowess_reg(x, y, xnew, kern, tau):
     return f(xnew)
 ```
 
-For our analysis of locally weighted linear regression, we will experiment with all three of the kernels to see which performs the best. 
+For our analysis of locally weighted linear regression, we will experiment with all three kernels learned in class to analyze which performs the best. In locally weighted linear regression, both the training data and parameters are needed to make a prediction, as it is key to understand which points are close to the test point. The weight term is a function of the test point and the training data points, meaning it measures how close the test point is to each of the training data points. Such a distance measure is called a kernel function. Kernel functions will be useful in other learning algorithms as well, particularly in Support Vector Machines. For this project, the tricubic, Quartic, and Epanechnikov kernel are used below.
 
 ```
 # Tricubic kernel 
@@ -159,7 +160,7 @@ Avg MSE : 17.668989890453354
 
 ### Hyperparameter Optimization
 
-For locally-weighted linear regression, we can try to optimize tau to obtain the best results. Out of the three different kernels, the Epanechnikov kernel yieled the lowest MSE value. As a result, for our hyperparameter optimization, we will continue to use the Epanechnikov kernel. 
+For locally-weighted linear regression, we can try to optimize tau to obtain the best results. Out of the three different kernels, the Epanechnikov kernel yieled the lowest MSE value. As a result, for our hyperparameter optimization, we will continue to use the Epanechnikov kernel. Hyperparameter optimization in machine learning intends to find the hyperparameters of a given machine learning algorithm that deliver the best performance as measured on a validation set. Hyperparameters, in contrast to model parameters, are set by the machine learning engineer before training.
 
 ```
 # Epanechnikov kernel 
@@ -221,7 +222,9 @@ Avg MSE : 17.65258283254534
 
 ## Random Forest Regressor
 
-Next, we examined the performance of a random forest regressor. The random forest regressor model is an ensemble model that incorporates many decision trees into its structure to make a final prediction on data. Random-forests are advantageous over decision trees because they are better at preventing overfitting due to the ensemble nature of the model (incorporating several predictions). First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
+Next, we examined the performance of a random forest regressor. The random forest regressor model is an ensemble model that incorporates many decision trees into its structure to make a final prediction on data. Random forests are advantageous over decision trees because they are better at preventing overfitting due to the ensemble nature of the model (incorporating several predictions). Furthermore, ranodm forests group weak learners together to form stronger learners (boosting), another theoretical strength of the model. First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
+
+Source: https://towardsdatascience.com/a-quick-and-dirty-guide-to-random-forest-regression-52ca0af157f8 
 
 ```
 k = 10
@@ -314,7 +317,7 @@ Avg MSE: 17.67407415028719.
 ![image](https://user-images.githubusercontent.com/76021844/153276691-be508348-8481-4969-9569-9d461c49de02.png)
 
 ### Final Comparison
-Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. The final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. 
+Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. However, it is important to note that this result cannot be generalized beyond this dataset and the exploratory work conducted in this paper yields results informed by the dataset used for training. That being said, the final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. When looking at the final plots for the Lowess model versus Random Forest, the random forest seemed to overfit to the data a little more than Lowess. A weakness of random forests in general is that they are sensitive to the data they are trained on, so that is another important consideration when analyzing the results of our experimentation. In terms of choosing a regression algorithm, however, it is important to note that all the training data is required when predicting with Lowess which can be problematic in terms of memory. 
 
 
 
