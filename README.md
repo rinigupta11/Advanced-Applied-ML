@@ -238,11 +238,11 @@ The random forest regressor model is an ensemble model that incorporates many de
 
 Source: https://towardsdatascience.com/a-quick-and-dirty-guide-to-random-forest-regression-52ca0af157f8 
 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2701298/ (Peer Reviewed)
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2701298/ 
 
 https://towardsdatascience.com/what-is-a-decision-tree-22975f00f3e1
 
-https://www.tandfonline.com/doi/abs/10.1198/tast.2009.08199
+https://www.tandfonline.com/doi/abs/10.1198/tast.2009.08199 
 ```
 k = 10
 kf = KFold(n_splits=k, shuffle=True, random_state=2021)
