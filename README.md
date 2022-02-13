@@ -36,7 +36,9 @@ y = data['MPG'].values # target
 ```
 
 ## Locally Weighted Linear Regression
-Next, we will examine the performance of a locally weighted linear regression model. Linear regression is a supervised learning algorithm used for computing linear relationships between input (X) and output (Y). In the instance of a non-linear relationship between X and Y, locally weighted linear regression is used. Locally weighted linear regression is a non-parametric algorithm, that is, the model does not learn a fixed set of parameters as is done in ordinary linear regression. Rather parameters (tau) are computed individually for each query point x. While computing tau, a higher “preference” is given to the points in the training set lying in the vicinity of x than the points lying far away from x.
+Next, we will examine the performance of a locally weighted linear regression model. Linear regression is a supervised learning algorithm used for computing linear relationships between input (X) and output (Y). In the instance of a non-linear relationship between X and Y, locally weighted linear regression is used. Locally weighted linear regression is a non-parametric algorithm, that is, the model does not learn a fixed set of parameters as is done in ordinary linear regression. Rather parameters (tau) are computed individually for each query point x. While computing tau, a higher “preference” is given to the points in the training set lying in the vicinity of x than the points lying far away from x. Locally weighted linear regression is a memory-based approach to learning. It is also called a "lazy learner" because it does not train until a query is posed to answer regarding prediction. 
+
+Source: https://scholar.google.com/scholar_url?url=http://www.qou.edu/ar/sciResearch/pdf/distanceLearning/locallyWeighted.pdf&hl=en&sa=X&ei=LAUJYuH1MN6Sy9YPo_qOwA8&scisig=AAGBfm2QpPq7HtXB0QEbnMhW8fb43AQSmQ&oi=scholarr
 
 ```
 # Tricubic Kernel
@@ -226,7 +228,7 @@ Next, we examined the performance of a random forest regressor. In order to unde
 ![image](https://user-images.githubusercontent.com/76021844/153754695-8e7d0a5c-fbec-4b84-b90c-fb756e6696fd.png)
 
 
-The random forest regressor model is an ensemble model that incorporates many decision trees into its structure to make a final prediction on data. Unlike an ordinary linear regressor, random forests can fit to accomodate non-linearities in the dataset. Random forests are advantageous over decision trees because they are better at preventing overfitting due to the ensemble nature of the model (incorporating several predictions). Furthermore, random forests group weak learners together to form stronger learners (boosting), another theoretical strength of the model. Random forests are regarded by data scientists as one of the "best performing learning algorithms." (Schonlau) First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
+The random forest regressor model is an ensemble model that incorporates many decision trees into its structure to make a final prediction on data. Unlike an ordinary linear regressor, random forests can fit to accomodate non-linearities in the dataset. Random forests are advantageous over decision trees because they are better at preventing overfitting due to the ensemble nature of the model (incorporating several predictions). Furthermore, random forests group weak learners together to form stronger learners (boosting), another theoretical strength of the model. Random forests are regarded by data scientists as one of the "best performing learning algorithms" (Schonlau). First, we ran the model with some hardcoded hyperparameters to get a rough idea of model performance. 
 
 Source: https://towardsdatascience.com/a-quick-and-dirty-guide-to-random-forest-regression-52ca0af157f8 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2701298/ (Peer Reviewed)
@@ -261,7 +263,7 @@ MSE of each fold:  [10.519229346856164, 16.949036884302654, 18.930417456552682, 
 Avg MSE: 17.74977495091358
 
 
-Then, we sought to optimize the performance of this model by fine-tuning the hyperparameters. Specifically, we tested different values for n-estimators and max depth.
+Then, we sought to optimize the performance of this model by fine-tuning the hyperparameters. Specifically, we tested different values for n-estimators and max depth. N-estimators is the number of trees in the random forest and max depth is the maximum depth of the tree. 
 
 ```
 k = 10
