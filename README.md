@@ -334,8 +334,25 @@ Avg MSE: 17.67407415028719.
 ![image](https://user-images.githubusercontent.com/76021844/153276691-be508348-8481-4969-9569-9d461c49de02.png)
 
 ### Final Comparison
-  Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. However, it is important to note that this result cannot be fully generalized beyond this dataset and the exploratory work conducted in this paper yields results informed by the dataset used for training. That being said, the final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. When looking at the final plots for the Lowess model versus Random Forest, the random forest seemed to overfit to the data a little more than Lowess. A weakness of random forests in general is that they are quite sensitive to the data they are trained on, so that is another important consideration when analyzing the results of our experimentation. In terms of choosing a regression algorithm, however, it is important to note that all the training data is required when predicting with Lowess since it is a lazy learner algorithm. 
+Despite the size and complexity of the random forest regressor model, the locally weighted linear regression yieled a lower final value for mean squared error, indicating that Lowess is the better model. However, it is important to note that this result cannot be fully generalized beyond this dataset and the exploratory work conducted in this paper yields results informed by the dataset used for training. That being said, the final MSE value for lowess was 17.65 and the final MSE for random forest regression was 17.67. When looking at the final plots for the Lowess model versus Random Forest, the random forest seemed to overfit to the data a little more than Lowess. A weakness of random forests in general is that they are quite sensitive to the data they are trained on, so that is another important consideration when analyzing the results of our experimentation. In terms of choosing a regression algorithm, however, it is important to note that all the training data is required when predicting with Lowess since it is a lazy learner algorithm. 
 
+
+
+Citations:
+
+Atkeson, C. G., Moore, A. W., &amp; Schaal, S. (1997). Locally weighted learning. Lazy Learning, 11–73. https://doi.org/10.1007/978-94-017-2053-3_2 
+
+C.-K. Chu, & Marron, J. S. (1991). Choosing a Kernel Regression Estimator. Statistical Science, 6(4), 404–419. http://www.jstor.org/stable/2245737
+
+Grömping, U. (2009). Variable importance assessment in regression: Linear regression versus Random Forest. The American Statistician, 63(4), 308–319. https://doi.org/10.1198/tast.2009.08199 
+
+Kingsford, C., & Salzberg, S. L. (2008). What are decision trees?. Nature biotechnology, 26(9), 1011–1013. https://doi.org/10.1038/nbt0908-1011
+
+Plapinger, T. (2017, September 26). What is a Decision Tree? Medium. Retrieved February 14, 2022, from https://towardsdatascience.com/what-is-a-decision-tree-22975f00f3e1 
+
+Raj, A. (2021, June 11). A quick and dirty guide to random forest regression. Medium. Retrieved February 14, 2022, from https://towardsdatascience.com/a-quick-and-dirty-guide-to-random-forest-regression-52ca0af157f8 
+
+Sicotte, X. (2018, May 24). Locally Weighted Linear Regression (Loess). Github. Retrieved February 13, 2022, from https://xavierbourretsicotte.github.io/loess.html
 
 
 
